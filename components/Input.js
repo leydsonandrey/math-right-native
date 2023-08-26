@@ -1,14 +1,14 @@
 import React from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
-export default function Input({
+export const Input = ({
   value,
   placeholder,
   onSubmitEditing,
   onChangeText,
   maxLength,
   color,
-}) {
+}) => {
 
   let buttonStyle = styles.inputDefault
   if (color == "green") {
