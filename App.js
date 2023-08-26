@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import { Button } from './components/Button';
@@ -12,19 +18,21 @@ export const App = () => {
   const [math, setMath] = useState({ n1: 0, n2: 0 });
   const [change, setChange] = useState(1);
   const [pontos, setPontos] = useState(0);
+  const [erros, setErros] = useState(0);
   const [color, setColor] = useState();
   const [stored, setStored] = useState(0);
 
   const checkNumber = () => {
     if (input != (math.n1 + math.n2)) { // errado
       changeValue()
-      setPontos(pontos - 1)
-      setColor('red')
-      if (pontos < 1) { setPontos(0) }
+      setErros(erros + 1)
+      setColor(false)
     } else if (input == (math.n1 + math.n2)) { // certo
       changeValue()
       setPontos(pontos + 1)
-      setColor('green')
+      setColor(true)
+    } else {
+      alert('erro')
     }
   }
 
@@ -41,7 +49,6 @@ export const App = () => {
 
   const changeValue = () => {
     setChange(change + 1)
-    setPontos(pontos - 1)
     if (pontos < 1) { setPontos(0) }
     setInput('')
     setStored(math.n1 + math.n2)
@@ -49,63 +56,90 @@ export const App = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.calcule}>{math.n1} + {math.n2}</Text>
-        <Text style={styles.pontos}>Pontos: {pontos} | Anterior: {stored}</Text>
-      </View>
-      <Input
-        value={input}
-        placeholder='000'
-        onSubmitEditing={checkNumber}
-        onChangeText={setInput}
-        maxLength={3}
-        color={color}
-      />
-      <View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.gameContainer}>
+        <View>
+          <Text style={styles.calc}>{math.n1} + {math.n2}</Text>
+          <View style={styles.statusContainer}>
+            <Text style={[styles.statusText, styles.statusTrue]}>C {pontos}</Text>
+            <Text style={[styles.statusText, styles.statusFalse]}>E {erros}</Text>
+            <Text style={[styles.statusText, styles.statusPrevious]}>A {stored}</Text>
             <Timer style={[styles.statusText, styles.statusTimer]} />
+          </View>
+        </View>
+        <Input
+          value={input}
+          placeholder='000'
+          onSubmitEditing={checkNumber}
+          onChangeText={setInput}
+          maxLength={3}
+          color={color}
+        />
         <Button
           onPress={checkNumber}
           title='Verificar'
-          buttonColor='cyan'
+          buttonColor='blue'
+          textColor='white'
         />
         <Button
           onPress={changeValue}
           title='Gerar Soma'
-          buttonColor='white'
+          buttonColor='dimgrey'
+          textColor='white'
         />
+        <StatusBar style="light" />
       </View>
-      <StatusBar style="light" />
-    </View>
+    </SafeAreaView >
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
-    // alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: StatusBar.currentHeight,
+    backgroundColor: 'black',
     paddingHorizontal: 20
   },
-  pontos: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 16,
-    marginTop: 10,
-    marginBottom: 25,
+  gameContainer: {
+    gap: 10,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
-  calcule: {
-    marginTop: 15,
+  statusContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  statusText: {
+    fontSize: 16,
+    padding: 5,
+    borderRadius: 5,
+  },
+  statusTrue: {
+    backgroundColor: 'green',
+    color: 'white'
+  },
+  statusFalse: {
+    backgroundColor: 'firebrick',
+    color: 'white'
+  },
+  statusPrevious: {
+    backgroundColor: 'dimgrey',
+    color: 'white'
+  },
   statusTimer: {
     backgroundColor: 'blue',
     color: 'white'
   },
+  calc: {
     fontSize: 45,
     color: 'white',
     textAlign: 'center',
   },
 });
-
 
 export default App;

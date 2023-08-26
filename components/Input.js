@@ -11,9 +11,9 @@ export const Input = ({
 }) => {
 
   let buttonStyle = styles.inputDefault
-  if (color == "green") {
+  if (color) {
     buttonStyle = styles.inputGreen
-  } else if (color == "red") {
+  } else if (color === false) {
     buttonStyle = styles.inputRed
   }
 
@@ -41,20 +41,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     padding: 10,
-    marginBottom: 10,
     borderWidth: 5,
     borderRadius: 10,
-    color: '#fff',
+    color: 'white',
     backgroundColor: '#000',
   },
   inputDefault: {
-    borderColor: '#fff'
+    borderColor: 'white'
   },
   inputGreen: {
     borderColor: 'green'
   },
   inputRed: {
-    borderColor: 'red'
+    borderColor: 'firebrick'
   }
 });
 
