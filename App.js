@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from './components/Button';
 import Input from './components/Input';
+import { Timer } from './components/Timer'
 
 export const App = () => {
   //    valor do estado / função de atualização / estado inicial
@@ -62,6 +63,7 @@ export const App = () => {
         color={color}
       />
       <View>
+            <Timer style={[styles.statusText, styles.statusTimer]} />
         <Button
           onPress={checkNumber}
           title='Verificar'
@@ -95,6 +97,10 @@ const styles = StyleSheet.create({
   },
   calcule: {
     marginTop: 15,
+  statusTimer: {
+    backgroundColor: 'blue',
+    color: 'white'
+  },
     fontSize: 45,
     color: 'white',
     textAlign: 'center',
