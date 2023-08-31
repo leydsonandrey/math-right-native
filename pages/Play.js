@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 
 import { SafeArea } from '../components/SafeArea'
 import { Button } from '../components/Button'
 import { Colors } from '../theme/Colors'
 
-export const Modos = ({ navigation }) => {
+export const Play = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState(10);
   return (
     <SafeArea background={Colors.black}>
-      <View style={{ flex: 1, justifyContent: 'center', gap: 15 }}>
-        <Text style={{ color: 'white', fontSize: 16, marginTop: 20 }}>Valor máximo:</Text>
+      <View style={{ flex: 1, justifyContent: 'center', gap: 10 }}>
         <Picker
           style={{ backgroundColor: 'white', color: 'black' }}
           selectedValue={selectedValue}
@@ -44,14 +43,6 @@ export const Modos = ({ navigation }) => {
           title="Divisão"
           onPress={() => navigation.push('Game', {
             maximo: selectedValue, type: 'divi'
-          })}
-          buttonColor={Colors.blue}
-          textColor='white'
-        />
-        <Button
-          title="Subtração"
-          onPress={() => navigation.push('Game', {
-            maximo: selectedValue, type: 'subt'
           })}
           buttonColor={Colors.blue}
           textColor='white'
