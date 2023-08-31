@@ -6,6 +6,8 @@ import { Picker } from '@react-native-picker/picker';
 
 // components
 import { Button } from './components/Button'
+// theme
+import { Colors } from './theme/Colors'
 
 // pages
 import { Play } from './app/Play'
