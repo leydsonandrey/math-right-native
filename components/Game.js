@@ -11,6 +11,8 @@ import { Timer } from './Timer';
 import { SafeArea } from './SafeArea';
 
 export const Game = ({ maximo }) => {
+// theme
+import { Colors } from '../theme/Colors'
   //    valor do estado / função de atualização / estado inicial
   const [input, setInput] = useState('');
   const [math, setMath] = useState({ n1: 0, n2: 0 });
@@ -56,7 +58,7 @@ export const Game = ({ maximo }) => {
   };
 
   return (
-    <SafeArea background='black'>
+    <SafeArea background={Colors.black}>
       <View style={styles.gameContainer}>
         <View>
           <Text style={styles.calc}>{math.n1} + {math.n2}</Text>
@@ -78,13 +80,10 @@ export const Game = ({ maximo }) => {
         <Button
           onPress={checkNumber}
           title='Verificar'
-          buttonColor='blue'
-          textColor='white'
-        />
         <Button
           onPress={changeValue}
           title='Gerar Soma'
-          buttonColor='dimgrey'
+          buttonColor={Colors.blue}
           textColor='white'
         />
         <StatusBar style="light" />
@@ -112,26 +111,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   statusTrue: {
-    backgroundColor: 'green',
-    color: 'white'
+    backgroundColor: Colors.green,
   },
   statusFalse: {
-    backgroundColor: 'firebrick',
-    color: 'white'
+    backgroundColor: Colors.red,
   },
   statusPrevious: {
-    backgroundColor: 'dimgrey',
-    color: 'white'
+    backgroundColor: Colors.jet,
   },
   statusTimer: {
-    backgroundColor: 'blue',
-    color: 'white'
+    backgroundColor: Colors.blue,
   },
   calc: {
     fontSize: 35,
     color: 'white',
     textAlign: 'center',
   },
-});
+})
 
 export default Game;
