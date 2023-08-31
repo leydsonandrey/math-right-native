@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
+import { Colors } from '../theme/Colors'
 
 export const Input = ({
   value,
@@ -24,13 +25,12 @@ export const Input = ({
         value={value}
         onSubmitEditing={onSubmitEditing}
         onChangeText={onChangeText}
-        placeholder={placeholder}
         maxLength={maxLength}
         autoFocus={true}
         blurOnSubmit={false}
         keyboardType='number-pad'
         cursorColor={'#fff'}
-        placeholderTextColor={'#696969'}
+        placeholderTextColor={'black'}
       />
     </View>
   )
@@ -39,21 +39,21 @@ export const Input = ({
 const styles = StyleSheet.create({
   input: {
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 30,
     padding: 10,
-    borderWidth: 5,
     borderRadius: 10,
     color: 'white',
-    backgroundColor: '#000',
+    backgroundColor: Colors.jet,
+    borderBottomWidth: 10
   },
   inputDefault: {
-    borderColor: 'white'
+    borderColor: 'white',
   },
   inputGreen: {
-    borderColor: 'green'
+    borderColor: Colors.green,
   },
   inputRed: {
-    borderColor: 'firebrick'
+    borderColor: Colors.red,
   }
 });
 
