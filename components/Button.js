@@ -17,12 +17,11 @@ const styles = StyleSheet.create({
   buttonContainer: (color) => ({
     backgroundColor: color,
     borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 10
+    paddingVertical: 20,
   }),
   buttonText: (color) => ({
     color: color,
-    fontSize: 20,
+    fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold'
   }),
