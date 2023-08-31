@@ -14,8 +14,9 @@ export const SafeArea = ({ children, background }) => {
         <View style={styles.viewContainer}>
           {children}
         </View>
-      </ScrollView>
-    </SafeAreaView >
+        <StatusBar style="light" />
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: color,
     paddingTop: StatusBar.currentHeight,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   }),
   viewContainer: {
     // paddingHorizontal: 20
