@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 
 export const Timer = ({ style }) => {
+  const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -12,10 +13,15 @@ export const Timer = ({ style }) => {
     return () => clearInterval(interval);
   }, []);
 
+  if (seconds > 59) {
+    setMinutes(minutes + 1)
+    setSeconds(0)
+  }
+
   return (
     <View>
-      <Text style={style}>T {seconds}</Text>
-    </View >
+      <Text style={style}>Tempo{"\n"}{minutes}:{seconds}</Text>
+    </View>
   );
 };
 
