@@ -5,17 +5,22 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  useWindowDimensions,
 } from 'react-native';
 
 export const SafeArea = ({ children, background }) => {
+  const { height, width, scale, fontScale } = useWindowDimensions();
+  console.log(height, width, scale, fontScale)
   return (
     <SafeAreaView style={styles.container(background)}>
       <ScrollView>
-        <View style={styles.viewContainer}>
-          {children}
+        <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={styles.viewContainer}>
+            {children}
+          </View>
         </View>
         <StatusBar style="light" />
-    </ScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -29,7 +34,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   }),
   viewContainer: {
-    // paddingHorizontal: 20
+    width: '100%',
+    maxWidth: 720
   }
 });
 
