@@ -18,6 +18,12 @@ export const Menu = ({ navigation }) => {
         buttonColor={Colors.blue}
         textColor='white'
       />
+      <Button
+        title="Configurações"
+        onPress={() => navigation.push('Config')}
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
       <StatusBar theme='light' />
     </View>
   );
