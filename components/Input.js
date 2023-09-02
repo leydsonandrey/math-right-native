@@ -4,7 +4,6 @@ import { Colors } from '../theme/Colors'
 
 export const Input = ({
   value,
-  placeholder,
   onSubmitEditing,
   onChangeText,
   maxLength,
@@ -30,7 +29,6 @@ export const Input = ({
         blurOnSubmit={false}
         keyboardType='number-pad'
         cursorColor={'#fff'}
-        placeholderTextColor={'black'}
       />
     </View>
   )
