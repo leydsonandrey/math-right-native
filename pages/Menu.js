@@ -11,7 +11,7 @@ import { Colors } from '../theme/Colors'
 
 export const Menu = ({ navigation }) => {
   return (
-    <SafeArea background={Colors.black} isScrollView={false}>
+    <SafeArea isScrollView={false}>
       <Text style={{ color: 'white', textAlign: 'center', fontSize: 50, marginBottom: 40 }}>Math Right</Text>
       <Button
         title="Jogar"

@@ -111,7 +111,7 @@ export const Game = ({ route }) => {
   }
 
   return (
-    <SafeArea background={Colors.black} isScrollView={false}>
+    <SafeArea isScrollView={false}>
       <View>
         {typeCalc().viewCalc}
         <View style={styles.statusContainer}>

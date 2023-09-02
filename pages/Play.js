@@ -11,7 +11,7 @@ import { Colors } from '../theme/Colors'
 export const Play = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState(10);
   return (
-    <SafeArea background={Colors.black} isScrollView>
+    <SafeArea isScrollView>
       <Picker
         style={{ backgroundColor: 'white', color: 'black' }}
         selectedValue={selectedValue}

@@ -7,10 +7,12 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-const SafeAreaComponent = ({ children, isScrollView, background }) => {
+import { Colors } from '../theme/Colors'
+
+const SafeAreaComponent = ({ children, isScrollView }) => {
   if (isScrollView) {
     return (
-      <SafeAreaView style={styles.container(background)} >
+      <SafeAreaView style={styles.container(Colors.black)} >
         <ScrollView>
           <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
             <View style={styles.viewContainer}>
@@ -23,7 +25,7 @@ const SafeAreaComponent = ({ children, isScrollView, background }) => {
     )
   } else {
     return (
-      <SafeAreaView style={styles.container(background)} >
+      <SafeAreaView style={styles.container(Colors.black)} >
         <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.viewContainer}>
             {children}
@@ -35,9 +37,9 @@ const SafeAreaComponent = ({ children, isScrollView, background }) => {
   }
 }
 
-export const SafeArea = ({ children, background, isScrollView }) => {
+export const SafeArea = ({ children, isScrollView }) => {
   return (
-    <SafeAreaComponent isScrollView={isScrollView} background={background}>
+    <SafeAreaComponent isScrollView={isScrollView}>
       {children}
     </SafeAreaComponent>
   );
