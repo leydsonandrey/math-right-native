@@ -7,7 +7,6 @@ import { Colors } from './theme/Colors'
 
 // pages
 import { Menu } from './pages/Menu'
-import { Config } from './pages/Config'
 import { Modos } from './pages/Modos'
 import { Game } from './components/Game'
 
@@ -31,7 +30,6 @@ const App = () => {
         <Stack.Screen name="Menu" component={Menu} options={{
           title: ''
         }} />
-        <Stack.Screen name="Config" component={Config} options={{ title: 'Configurações' }} />
         <Stack.Screen name="Modos" component={Modos} options={{ title: 'Modos' }} />
         <Stack.Screen name="Game" component={Game} options={{ title: 'Cálcule' }} />
       </Stack.Navigator>
