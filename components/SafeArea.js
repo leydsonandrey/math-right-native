@@ -5,23 +5,41 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
-  useWindowDimensions,
 } from 'react-native';
 
-export const SafeArea = ({ children, background }) => {
-  const { height, width, scale, fontScale } = useWindowDimensions();
-  console.log(height, width, scale, fontScale)
-  return (
-    <SafeAreaView style={styles.container(background)}>
-      <ScrollView>
+const SafeAreaComponent = ({ children, isScrollView, background }) => {
+  if (isScrollView) {
+    return (
+      <SafeAreaView style={styles.container(background)} >
+        <ScrollView>
+          <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={styles.viewContainer}>
+              {children}
+            </View>
+          </View>
+          <StatusBar style="light" />
+        </ScrollView>
+      </SafeAreaView>
+    )
+  } else {
+    return (
+      <SafeAreaView style={styles.container(background)} >
         <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.viewContainer}>
             {children}
           </View>
         </View>
         <StatusBar style="light" />
-      </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+    )
+  }
+}
+
+export const SafeArea = ({ children, background, isScrollView }) => {
+  return (
+    <SafeAreaComponent isScrollView={isScrollView} background={background}>
+      {children}
+    </SafeAreaComponent>
   );
 }
 
@@ -35,7 +53,8 @@ const styles = StyleSheet.create({
   }),
   viewContainer: {
     width: '100%',
-    maxWidth: 720
+    maxWidth: 720,
+    gap: 20
   }
 });
 

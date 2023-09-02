@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
 // components
 import { SafeArea } from '../components/SafeArea'
@@ -9,19 +9,13 @@ import { Colors } from '../theme/Colors'
 
 export const Config = () => {
   return (
-    <SafeArea background={Colors.black}>
-      <View style={styles.container}>
-        <Text style={styles.text}>TESTE</Text>
-      </View>
+    <SafeArea background={Colors.black} isScrollView>
+      <Text style={styles.text}>TESTE</Text>
     </SafeArea>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    gap: 10,
-    paddingTop: 10,
-  },
   text: {
     fontSize: 20,
     color: 'white'

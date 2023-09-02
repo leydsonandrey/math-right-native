@@ -111,33 +111,31 @@ export const Game = ({ route }) => {
   }
 
   return (
-    <SafeArea background={Colors.black}>
-      <View style={styles.gameContainer}>
-        <View>
-          {typeCalc().viewCalc}
-          <View style={styles.statusContainer}>
-            <Text style={[styles.statusText, styles.statusTrue]}>Acertos{'\n'}{pontos}</Text>
-            <Text style={[styles.statusText, styles.statusFalse]}>Errados{'\n'}{erros}</Text>
-            <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored}</Text>
-            <Timer style={[styles.statusText, styles.statusTimer]} />
-          </View>
+    <SafeArea background={Colors.black} isScrollView={false}>
+      <View>
+        {typeCalc().viewCalc}
+        <View style={styles.statusContainer}>
+          <Text style={[styles.statusText, styles.statusTrue]}>Acertos{'\n'}{pontos}</Text>
+          <Text style={[styles.statusText, styles.statusFalse]}>Errados{'\n'}{erros}</Text>
+          <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored}</Text>
+          <Timer style={[styles.statusText, styles.statusTimer]} />
         </View>
-        <Input
-          value={input}
-          onSubmitEditing={checkNumber}
-          onChangeText={setInput}
-          maxLength={typeCalc().sizeInput}
-          color={color}
-        />
-        <Button
-          onPress={checkNumber}
-          title='Verificar'
-          buttonColor={Colors.blue}
-          textColor='white'
-        />
-        <StatusBar style="light" />
-        {typeCalc().text}
       </View>
+      <Input
+        value={input}
+        onSubmitEditing={checkNumber}
+        onChangeText={setInput}
+        maxLength={typeCalc().sizeInput}
+        color={color}
+      />
+      <Button
+        onPress={checkNumber}
+        title='Verificar'
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
+      <StatusBar style="light" />
+      {typeCalc().text}
     </SafeArea>
   );
 }
