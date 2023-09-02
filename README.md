@@ -8,7 +8,7 @@ Usado
 - [React Native Picker](https://github.com/react-native-picker/picker)
 
 Executar web
-```npm
+```
 yarn run web
 ```
 
