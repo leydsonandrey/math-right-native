@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { View } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 
+// components
 import { SafeArea } from '../components/SafeArea'
 import { Button } from '../components/Button'
+
+// theme
 import { Colors } from '../theme/Colors'
 
 export const Play = ({ navigation }) => {

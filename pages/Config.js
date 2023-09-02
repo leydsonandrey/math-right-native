@@ -1,7 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 
+// components
 import { SafeArea } from '../components/SafeArea'
+
+// theme
 import { Colors } from '../theme/Colors'
 
 export const Config = () => {
