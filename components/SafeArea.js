@@ -51,10 +51,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: color,
     paddingTop: StatusBar.currentHeight,
-    paddingHorizontal: 20,
   }),
   viewContainer: {
     width: '100%',
+    paddingHorizontal: 20,
     maxWidth: 720,
     gap: 20
   }
