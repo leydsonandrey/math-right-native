@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Image, View } from 'react-native';
 
 // components
 import { Button } from '../components/Button'
@@ -12,7 +12,16 @@ import { Colors } from '../theme/Colors'
 export const Menu = ({ navigation }) => {
   return (
     <SafeArea isScrollView={false}>
-      <Text style={{ color: 'white', textAlign: 'center', fontSize: 50, marginBottom: 40 }}>Math Right</Text>
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Image
+          style={{
+            height: 511 / 3,
+            width: 994 / 3,
+            resizeMode: 'contain'
+          }}
+          source={require('../assets/icon_menu.png')}
+        />
+      </View>
       <Button
         title="Jogar"
         onPress={() => navigation.push('Modos')}
