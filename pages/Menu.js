@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { Image, View } from 'react-native';
 
 // components
@@ -28,7 +27,6 @@ export const Menu = ({ navigation }) => {
         buttonColor={Colors.blue}
         textColor='white'
       />
-      <StatusBar theme='light' />
     </SafeArea>
   );
 }
