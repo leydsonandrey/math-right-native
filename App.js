@@ -28,7 +28,8 @@ const App = () => {
         }}
       >
         <Stack.Screen name="Menu" component={Menu} options={{
-          title: ''
+          title: '',
+          headerShown: false,
         }} />
         <Stack.Screen name="Modos" component={Modos} options={{ title: 'Modos' }} />
         <Stack.Screen name="Game" component={Game} options={{ title: 'Calcule' }} />
