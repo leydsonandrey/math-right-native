@@ -14,7 +14,7 @@ Um simples gerador de cálculos com pontuação.
 
 ### Preciso
 
-- Node 16 LTS
+- Node 18 LTS
 - Npm
 - Yarn
 - `expo-cli`
