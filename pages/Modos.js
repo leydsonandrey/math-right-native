@@ -16,6 +16,8 @@ export const Modos = ({ navigation }) => {
       <Text style={{ color: 'white', fontSize: 16, marginTop: 20 }}>Valor máximo:</Text>
       <Picker
         style={{ backgroundColor: 'white', color: 'black', height: 50, borderRadius: 10, fontSize: 16, paddingHorizontal: 10 }}
+        mode={'dropdown'}
+        dropdownIconColor={'#343434'}
         selectedValue={selectedValue}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         prompt={'Valor máximo:'}
