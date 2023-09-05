@@ -8,8 +8,10 @@ import {
 } from 'react-native';
 
 import { Colors } from '../theme/Colors'
+import { inject } from '@vercel/analytics';
 
 const SafeAreaComponent = ({ children, isScrollView }) => {
+  inject();
   if (isScrollView) {
     return (
       <SafeAreaView style={styles.container(Colors.black)} >
