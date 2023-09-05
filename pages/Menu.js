@@ -13,7 +13,7 @@ export const Menu = ({ navigation }) => {
   return (
     <SafeArea isScrollView={false}>
       <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
-        <Logo width="auto" height="auto" />
+        <Logo />
       </View>
       <Button
         title="Jogar"
