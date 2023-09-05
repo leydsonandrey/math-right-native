@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     gap: 20,
-    maxWidth: 720
+    maxWidth: 720,
+    paddingBottom: 20
   }
 });
 
