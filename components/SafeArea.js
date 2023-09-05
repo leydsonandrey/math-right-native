@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  Platform
 } from 'react-native';
 
 import { Colors } from '../theme/Colors'
@@ -52,13 +53,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: color,
-    paddingTop: StatusBar.currentHeight,
+    ...Platform.select({
+      ios: {
+        paddingTop: StatusBar.currentHeight,
+      },
+      android: {
+        paddingTop: StatusBar.currentHeight,
+      },
+      default: {
+        paddingTop: 0
+      }
+    })
   }),
   viewContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    maxWidth: 720,
-    gap: 20
+    gap: 20,
+    maxWidth: 720
   }
 });
 
