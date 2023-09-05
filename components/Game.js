@@ -44,6 +44,10 @@ export const Game = ({ route }) => {
       }
     } else if (type === 'subt') {
       return math.n1 - math.n2
+    } else if (type === 'pont2') {
+      return math.n1 * math.n1
+    } else if (type === 'pont3') {
+      return math.n2 * math.n2 * math.n2
     }
   }
   console.log(8 / 3)
@@ -105,6 +109,18 @@ export const Game = ({ route }) => {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
         sizeInput: (maximo * 10).toString().length
+      }
+      return typeOfCalc
+    } else if (type === 'pont2') {
+      const typeOfCalc = {
+        viewCalc: <Text style={styles.calc}>{math.n1}²</Text>,
+        sizeInput: (math.n1 * math.n1).toString().length
+      }
+      return typeOfCalc
+    } else if (type === 'pont3') {
+      const typeOfCalc = {
+        viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
+        sizeInput: (math.n2 * math.n2 * math.n2).toString().length
       }
       return typeOfCalc
     }

@@ -60,6 +60,22 @@ export const Modos = ({ navigation }) => {
         buttonColor={Colors.blue}
         textColor='white'
       />
+      <Button
+        title="Expoente 2"
+        onPress={() => navigation.push('Game', {
+          maximo: selectedValue, type: 'pont2'
+        })}
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
+      <Button
+        title="Expoente 3"
+        onPress={() => navigation.push('Game', {
+          maximo: selectedValue, type: 'pont3'
+        })}
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
     </SafeArea>
   );
 }
