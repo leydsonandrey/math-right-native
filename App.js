@@ -33,7 +33,7 @@ const App = () => {
           title: ''
         }} />
         <Stack.Screen name="Modos" component={Modos} options={{ title: 'Modos' }} />
-        <Stack.Screen name="Game" component={Game} options={{ title: 'Cálcule' }} />
+        <Stack.Screen name="Game" component={Game} options={{ title: 'Calcule' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
