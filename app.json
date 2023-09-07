@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#343434"
+      "backgroundColor": "#1d1d1d"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#343434"
+        "backgroundColor": "#1d1d1d"
       },
       "package": "com.andrey.tar.xz.MathRight"
     },
