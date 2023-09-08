@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  Platform,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -24,27 +25,31 @@ export const Game = ({ route }) => {
   const [pontos, setPontos] = useState(0);
   const [erros, setErros] = useState(0);
   const [color, setColor] = useState();
-  const [stored, setStored] = useState(0);
+  const [stored, setStored] = useState({ n1: 0, n2: 0, n3: 0 });
 
   const { maximo, type } = route.params;
 
   const typeOfNumbers = () => {
     if (type === 'soma') {
       return math.n1 + math.n2
+    } else if (type === 'subt') {
+      return math.n1 - math.n2
     } else if (type === 'mult') {
       return math.n1 * math.n2
     } else if (type === 'divi') {
       const divisao = math.n1 / math.n2
-      if ((math.n1 % math.n2) === 0) {
-        console.log('%', divisao)
+      if (Number.isInteger(divisao)) {
         return divisao
       } else {
-        const valuediv = divisao.toString().slice(0, maximo.toString().length + 2)
-        console.log('/', valuediv)
-        return parseFloat(valuediv)
+        return divisao.toFixed(2)
       }
-    } else if (type === 'subt') {
-      return math.n1 - math.n2
+    } else if (type === 'raiz2') {
+      const raizQuadrada = Math.sqrt(math.n1)
+      if (Number.isInteger(raizQuadrada)) {
+        return raizQuadrada
+      } else {
+        return raizQuadrada.toFixed(2)
+      }
     } else if (type === 'pont2') {
       return math.n1 * math.n1
     } else if (type === 'pont3') {
@@ -82,7 +87,7 @@ export const Game = ({ route }) => {
     setChange(change + 1)
     if (pontos < 1) { setPontos(0) }
     setInput('')
-    setStored(typeOfNumbers)
+    setStored({ n1: math.n1, n2: math.n2, n3: typeOfNumbers() })
     setColor()
   };
 
@@ -90,38 +95,57 @@ export const Game = ({ route }) => {
     if (type === 'soma') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
         sizeInput: maximo.toString().length
+      }
+      return typeOfCalc
+    } else if (type === 'subt') {
+      const typeOfCalc = {
+        viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} - {stored.n2} = {stored.n3}</Text>,
+        sizeInput: (maximo * 10).toString().length
       }
       return typeOfCalc
     } else if (type === 'mult') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} × {math.n2}</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} × {stored.n2} = {stored.n3}</Text>,
         sizeInput: (maximo * maximo).toString().length
       }
       return typeOfCalc
     } else if (type === 'divi') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} ÷ {math.n2}</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} ÷ {stored.n2} = {stored.n3}</Text>,
         sizeInput: (maximo * 100).toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67</Alert>
       }
       return typeOfCalc
-    } else if (type === 'subt') {
+    } else if (type === 'raiz2') {
+      let raizSize
+      if (Number.isInteger(Math.sqrt(math.n1))) {
+        raizSize = Math.sqrt(math.n1)
+      } else {
+        raizSize = Math.sqrt(math.n1).toFixed(2)
+      }
       const typeOfCalc = {
-        viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
-        sizeInput: (maximo * 10).toString().length
+        viewCalc: <text style={styles.calc}>√{math.n1}</text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
+        sizeInput: raizSize.toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16</Alert>
       }
       return typeOfCalc
     } else if (type === 'pont2') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1}²</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1}² = {stored.n3}</Text>,
         sizeInput: (math.n1 * math.n1).toString().length
       }
       return typeOfCalc
     } else if (type === 'pont3') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n2}³ = {stored.n3}</Text>,
         sizeInput: (math.n2 * math.n2 * math.n2).toString().length
       }
       return typeOfCalc
@@ -135,7 +159,7 @@ export const Game = ({ route }) => {
         <View style={styles.statusContainer}>
           <Text style={[styles.statusText, styles.statusTrue]}>Acertos{'\n'}{pontos}</Text>
           <Text style={[styles.statusText, styles.statusFalse]}>Errados{'\n'}{erros}</Text>
-          <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored}</Text>
+          {typeCalc().anterior}
           <Timer style={[styles.statusText, styles.statusTimer]} />
         </View>
       </View>

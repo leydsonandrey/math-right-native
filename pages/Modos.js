@@ -37,6 +37,14 @@ export const Modos = ({ navigation }) => {
         textColor='white'
       />
       <Button
+        title="Subtração"
+        onPress={() => navigation.push('Game', {
+          maximo: selectedValue, type: 'subt'
+        })}
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
+      <Button
         title="Multiplicação"
         onPress={() => navigation.push('Game', {
           maximo: selectedValue, type: 'mult'
@@ -53,9 +61,9 @@ export const Modos = ({ navigation }) => {
         textColor='white'
       />
       <Button
-        title="Subtração"
+        title="Raiz quadrada"
         onPress={() => navigation.push('Game', {
-          maximo: selectedValue, type: 'subt'
+          maximo: selectedValue, type: 'raiz2'
         })}
         buttonColor={Colors.blue}
         textColor='white'
