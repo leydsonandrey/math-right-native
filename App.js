@@ -22,7 +22,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Menu"
         screenOptions={{
           headerStyle: {
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.jet,
           },
           headerTintColor: 'white',
           headerTitleStyle: {
