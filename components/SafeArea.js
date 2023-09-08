@@ -1,19 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
 import {
   View,
   StyleSheet,
   ScrollView,
   SafeAreaView,
   Platform
-} from 'react-native';
+} from 'react-native'
 
 import { Colors } from '../theme/Colors'
 
 const SafeAreaComponent = ({ children, isScrollView }) => {
   if (isScrollView) {
     return (
-      <SafeAreaView style={styles.container(Colors.black)} >
+      <SafeAreaView style={styles.container(Colors.black)}>
         <ScrollView>
           <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
             <View style={styles.viewContainer}>
@@ -43,7 +45,7 @@ export const SafeArea = ({ children, isScrollView }) => {
     <SafeAreaComponent isScrollView={isScrollView}>
       {children}
     </SafeAreaComponent>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -72,4 +74,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SafeArea;
+export default SafeArea

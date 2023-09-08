@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // theme
 import { Colors } from './theme/Colors'
@@ -10,7 +10,7 @@ import { Menu } from './pages/Menu'
 import { Modos } from './pages/Modos'
 import { Game } from './components/Game'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 const App = () => {
   return (
@@ -38,4 +38,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
