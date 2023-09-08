@@ -147,7 +147,7 @@ export const Game = ({ route }) => {
   }
 
   return (
-    <SafeArea isScrollView={Platform.OS === 'native' ? false : true}>
+    <SafeArea>
       <View>
         {typeCalc().viewCalc}
         <View style={styles.statusContainer}>

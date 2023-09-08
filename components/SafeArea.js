@@ -10,13 +10,24 @@ import {
 
 import { Colors } from '../theme/Colors'
 
-const SafeAreaComponent = ({ children, isScrollView }) => {
-  if (isScrollView) {
+const SafeAreaComponent = ({ children, notScrollView }) => {
+  if (notScrollView) {
+    return (
+      <SafeAreaView style={styles.container(Colors.black)} >
+        <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={styles.viewContainer(notScrollView)}>
+            {children}
+          </View>
+        </View>
+        <StatusBar style="light" />
+      </SafeAreaView>
+    )
+  } else {
     return (
       <SafeAreaView style={styles.container(Colors.black)}>
         <ScrollView>
           <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={styles.viewContainer(isScrollView)}>
+            <View style={styles.viewContainer(notScrollView)}>
               {children}
             </View>
           </View>
@@ -24,23 +35,12 @@ const SafeAreaComponent = ({ children, isScrollView }) => {
         </ScrollView>
       </SafeAreaView>
     )
-  } else {
-    return (
-      <SafeAreaView style={styles.container(Colors.black)} >
-        <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={styles.viewContainer(isScrollView)}>
-            {children}
-          </View>
-        </View>
-        <StatusBar style="light" />
-      </SafeAreaView>
-    )
   }
 }
 
-export const SafeArea = ({ children, isScrollView }) => {
+export const SafeArea = ({ children, notScrollView }) => {
   return (
-    <SafeAreaComponent isScrollView={isScrollView}>
+    <SafeAreaComponent notScrollView={notScrollView}>
       {children}
     </SafeAreaComponent>
   )
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
       }
     })
   }),
-  viewContainer: (isScrollView) => ({
+  viewContainer: (notScrollView) => ({
     width: '100%',
     maxWidth: 720,
     paddingHorizontal: 20,
     paddingBottom: 20,
-    marginTop: isScrollView === true ? 30 : 0,
+    marginTop: notScrollView ? 0 : 20,
     gap: 15,
   })
 })

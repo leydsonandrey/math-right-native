@@ -11,7 +11,7 @@ import Logo from '../assets/logo_svg'
 
 export const Menu = ({ navigation }) => {
   return (
-    <SafeArea isScrollView={false}>
+    <SafeArea notScrollView>
       <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
         <Logo />
       </View>

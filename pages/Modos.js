@@ -12,7 +12,7 @@ import { Colors } from '../theme/Colors'
 export const Modos = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState(10);
   return (
-    <SafeArea isScrollView>
+    <SafeArea>
       <Text style={{ color: 'white', fontSize: 16 }}>Valor máximo:</Text>
       <Picker
         style={{ backgroundColor: 'white', color: 'black', height: 50, borderRadius: 10, fontSize: 16, paddingHorizontal: 10 }}
