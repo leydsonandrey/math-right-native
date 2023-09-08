@@ -129,7 +129,7 @@ export const Game = ({ route }) => {
         raizSize = Math.sqrt(math.n1).toFixed(2)
       }
       const typeOfCalc = {
-        viewCalc: <text style={styles.calc}>√{math.n1}</text>,
+        viewCalc: <Text style={styles.calc}>√{math.n1}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
         sizeInput: raizSize.toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16</Alert>
