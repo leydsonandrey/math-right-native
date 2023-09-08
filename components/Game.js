@@ -126,7 +126,7 @@ export const Game = ({ route }) => {
         viewCalc: <Text style={styles.calc}>√{math.n1}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
         sizeInput: typeOfNumbers().toString().length,
-        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16</Alert>
+        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16{'\n\n'}Esse modo pode ter contas erradas!</Alert>
       }
       return typeOfCalc
     } else if (type === 'pont2') {
