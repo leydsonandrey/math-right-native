@@ -13,7 +13,7 @@ export const Modos = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState(10);
   return (
     <SafeArea isScrollView>
-      <Text style={{ color: 'white', fontSize: 16, marginTop: 20 }}>Valor máximo:</Text>
+      <Text style={{ color: 'white', fontSize: 16 }}>Valor máximo:</Text>
       <Picker
         style={{ backgroundColor: 'white', color: 'black', height: 50, borderRadius: 10, fontSize: 16, paddingHorizontal: 10 }}
         mode={'dropdown'}

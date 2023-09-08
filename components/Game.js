@@ -129,7 +129,7 @@ export const Game = ({ route }) => {
   }
 
   return (
-    <SafeArea isScrollView={false}>
+    <SafeArea isScrollView={Platform.OS === 'native' ? false : true}>
       <View>
         {typeCalc().viewCalc}
         <View style={styles.statusContainer}>
@@ -154,15 +154,11 @@ export const Game = ({ route }) => {
       />
       <StatusBar style="light" />
       {typeCalc().text}
-    </SafeArea>
+    </SafeArea >
   );
 }
 
 const styles = StyleSheet.create({
-  gameContainer: {
-    gap: 10,
-    paddingTop: 10
-  },
   statusContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -174,8 +170,8 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 12,
     padding: 5,
-    borderRadius: 5,
     textAlign: 'center',
+    borderRadius: 5,
     color: 'white'
   },
   statusTrue: {

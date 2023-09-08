@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import {
@@ -18,7 +16,7 @@ const SafeAreaComponent = ({ children, isScrollView }) => {
       <SafeAreaView style={styles.container(Colors.black)}>
         <ScrollView>
           <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={styles.viewContainer}>
+            <View style={styles.viewContainer(isScrollView)}>
               {children}
             </View>
           </View>
@@ -30,7 +28,7 @@ const SafeAreaComponent = ({ children, isScrollView }) => {
     return (
       <SafeAreaView style={styles.container(Colors.black)} >
         <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={styles.viewContainer}>
+          <View style={styles.viewContainer(isScrollView)}>
             {children}
           </View>
         </View>
@@ -65,13 +63,14 @@ const styles = StyleSheet.create({
       }
     })
   }),
-  viewContainer: {
+  viewContainer: (isScrollView) => ({
     width: '100%',
-    paddingHorizontal: 20,
-    gap: 20,
     maxWidth: 720,
-    paddingBottom: 20
-  }
-});
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    marginTop: isScrollView === true ? 30 : 0,
+    gap: 15,
+  })
+})
 
 export default SafeArea
