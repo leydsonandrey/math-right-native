@@ -2,6 +2,9 @@
 
 Um simples gerador de cálculos com pontuação. 
 
+<img src="screenshots/screenshot_menu.png" width="200"> | <img src="screenshots/screenshot_modos.png" width="200"> | <img src="screenshots/screenshot_game.png" width="200">
+:---: | :---: | :---:
+
 ## Usado
 
 - [Expo](https://expo.dev)
