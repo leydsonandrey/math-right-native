@@ -7,7 +7,7 @@ import {
 
 export const Button = ({ onPress, title, buttonColor, textColor }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, styles.buttonContainer(buttonColor)]}>
+    <TouchableOpacity onPress={onPress} style={styles.buttonContainer(buttonColor)}>
       <Text selectable={false} style={styles.buttonText(textColor)}>{title}</Text>
     </TouchableOpacity>
   );
@@ -16,11 +16,11 @@ export const Button = ({ onPress, title, buttonColor, textColor }) => {
 const styles = StyleSheet.create({
   buttonContainer: (color) => ({
     backgroundColor: color,
-    borderRadius: 10,
     paddingVertical: 20,
+    borderRadius: 10,
   }),
   buttonText: (color) => ({
-    color: color,
+    color: color ? color : 'white',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold'

@@ -168,7 +168,6 @@ export const Game = ({ route }) => {
         onPress={checkNumber}
         title='Verificar'
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <StatusBar style="light" />
       {typeCalc().text}

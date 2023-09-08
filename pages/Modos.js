@@ -34,7 +34,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'soma'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Subtração"
@@ -42,7 +41,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'subt'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Multiplicação"
@@ -50,7 +48,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'mult'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Divisão"
@@ -58,7 +55,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'divi'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Raiz quadrada"
@@ -66,7 +62,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'raiz2'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Expoente 2"
@@ -74,7 +69,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'pont2'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Expoente 3"
@@ -82,7 +76,6 @@ export const Modos = ({ navigation }) => {
           maximo: selectedValue, type: 'pont3'
         })}
         buttonColor={Colors.blue}
-        textColor='white'
       />
     </SafeArea>
   );

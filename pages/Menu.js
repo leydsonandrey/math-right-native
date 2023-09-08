@@ -19,13 +19,11 @@ export const Menu = ({ navigation }) => {
         title="Jogar"
         onPress={() => navigation.push('Modos')}
         buttonColor={Colors.blue}
-        textColor='white'
       />
       <Button
         title="Bug/Sugestão"
         onPress={() => Linking.openURL('https://forms.gle/G5wgLNFXUSqoY8QM9')}
         buttonColor={Colors.blue}
-        textColor='white'
       />
     </SafeArea>
   );
