@@ -96,42 +96,36 @@ export const Game = ({ route }) => {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
-        sizeInput: maximo.toString().length
+        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'subt') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} - {stored.n2} = {stored.n3}</Text>,
-        sizeInput: (maximo * 10).toString().length
+        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'mult') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} × {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} × {stored.n2} = {stored.n3}</Text>,
-        sizeInput: (maximo * maximo).toString().length
+        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'divi') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} ÷ {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} ÷ {stored.n2} = {stored.n3}</Text>,
-        sizeInput: (maximo * 100).toString().length,
+        sizeInput: typeOfNumbers().toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67</Alert>
       }
       return typeOfCalc
     } else if (type === 'raiz2') {
-      let raizSize
-      if (Number.isInteger(Math.sqrt(math.n1))) {
-        raizSize = Math.sqrt(math.n1)
-      } else {
-        raizSize = Math.sqrt(math.n1).toFixed(2)
-      }
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>√{math.n1}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
-        sizeInput: raizSize.toString().length,
+        sizeInput: typeOfNumbers().toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16</Alert>
       }
       return typeOfCalc
@@ -139,14 +133,14 @@ export const Game = ({ route }) => {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1}²</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1}² = {stored.n3}</Text>,
-        sizeInput: (math.n1 * math.n1).toString().length
+        sizeInput: typeOfNumbers().toString().length,
       }
       return typeOfCalc
     } else if (type === 'pont3') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n2}³ = {stored.n3}</Text>,
-        sizeInput: (math.n2 * math.n2 * math.n2).toString().length
+        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     }
