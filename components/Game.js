@@ -14,6 +14,7 @@ import { SafeArea } from './SafeArea';
 
 // theme
 import { Colors } from '../theme/Colors'
+import { Alert } from '../theme/Alert'
 
 export const Game = ({ route }) => {
   //    valor do estado / função de atualização / estado inicial
@@ -102,13 +103,14 @@ export const Game = ({ route }) => {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} ÷ {math.n2}</Text>,
         sizeInput: (maximo * 100).toString().length,
-        text: <Text style={styles.statusText}>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.66</Text>
+        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67</Alert>
       }
       return typeOfCalc
     } else if (type === 'subt') {
       const typeOfCalc = {
         viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
         sizeInput: (maximo * 10).toString().length
+        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16</Alert>
       }
       return typeOfCalc
     } else if (type === 'pont2') {
