@@ -13,8 +13,12 @@ import { Game } from './components/Game'
 const Stack = createNativeStackNavigator()
 
 const App = () => {
+  const linking = {
+    prefixes: ['math-right://', 'https://math-right.vercel.app'],
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator initialRouteName="Menu"
         screenOptions={{
           headerStyle: {
