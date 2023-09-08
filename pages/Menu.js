@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Linking } from 'react-native';
 
 // components
 import { Button } from '../components/Button'
@@ -18,6 +18,12 @@ export const Menu = ({ navigation }) => {
       <Button
         title="Jogar"
         onPress={() => navigation.push('Modos')}
+        buttonColor={Colors.blue}
+        textColor='white'
+      />
+      <Button
+        title="Bug/Sugestão"
+        onPress={() => Linking.openURL('https://forms.gle/G5wgLNFXUSqoY8QM9')}
         buttonColor={Colors.blue}
         textColor='white'
       />
