@@ -1,149 +1,130 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   StyleSheet,
   View,
   Text,
-  Platform,
-} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+} from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 
 // components
-import { Button } from './Button';
-import { Input } from './Input';
-import { Timer } from './Timer';
-import { SafeArea } from './SafeArea';
+import Button from './Button'
+import Input from './Input'
+import Timer from './Timer'
+import SafeArea from './SafeArea'
 
 // theme
 import { Colors } from '../theme/Colors'
 import { Alert } from '../theme/Alert'
 
-export const Game = ({ route }) => {
+export default function Game({ route }) {
   //    valor do estado / função de atualização / estado inicial
-  const [input, setInput] = useState();
-  const [math, setMath] = useState({ n1: 0, n2: 0 });
-  const [change, setChange] = useState(1);
-  const [pontos, setPontos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [color, setColor] = useState();
-  const [stored, setStored] = useState({ n1: 0, n2: 0, n3: 0 });
+  const [input, setInput] = useState()
+  const [math, setMath] = useState({ n1: 0, n2: 0 })
+  const [change, setChange] = useState(0)
+  const [pontos, setPontos] = useState(0)
+  const [erros, setErros] = useState(0)
+  const [color, setColor] = useState()
+  const [stored, setStored] = useState({ n1: 0, n2: 0, n3: 0 })
 
-  const { maximo, type } = route.params;
+  const { maximo, type } = route.params
 
-  const typeOfNumbers = () => {
-    if (type === 'soma') {
-      return math.n1 + math.n2
-    } else if (type === 'subt') {
-      return math.n1 - math.n2
-    } else if (type === 'mult') {
-      return math.n1 * math.n2
-    } else if (type === 'divi') {
-      const divisao = math.n1 / math.n2
-      if (Number.isInteger(divisao)) {
-        return divisao
-      } else {
-        return divisao.toFixed(2)
-      }
-    } else if (type === 'raiz2') {
-      const raizQuadrada = Math.sqrt(math.n1)
-      if (Number.isInteger(raizQuadrada)) {
-        return raizQuadrada
-      } else {
-        return raizQuadrada.toFixed(2)
-      }
-    } else if (type === 'pont2') {
-      return math.n1 * math.n1
-    } else if (type === 'pont3') {
-      return math.n2 * math.n2 * math.n2
-    }
-  }
-  console.log(8 / 3)
-
-  const checkNumber = () => {
-    if (input != typeOfNumbers()) { // errado
-      changeValue()
-      setErros(erros + 1)
-      setColor(false)
-    } else if (input == typeOfNumbers()) { // certo
-      changeValue()
-      setPontos(pontos + 1)
-      setColor(true)
-    } else {
-      alert('erro')
-    };
-  };
-
-  useEffect(() => {
-    setMath({
-      n1: handleRandomNumber(),
-      n2: handleRandomNumber(),
-    });
-  }, [change]) // ao `change` mudar, setMath será executado
-
-  const handleRandomNumber = () => {
-    return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
-  };
-
-  const changeValue = () => {
-    setChange(change + 1)
-    if (pontos < 1) { setPontos(0) }
-    setInput('')
-    setStored({ n1: math.n1, n2: math.n2, n3: typeOfNumbers() })
-    setColor()
-  };
-
-  const typeCalc = () => {
+  function typeCalc() {
     if (type === 'soma') {
       const typeOfCalc = {
+        valueNumber: math.n1 + math.n2,
         viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'subt') {
       const typeOfCalc = {
+        valueNumber: math.n1 - math.n2,
         viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} - {stored.n2} = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'mult') {
       const typeOfCalc = {
+        valueNumber: math.n1 * math.n2,
         viewCalc: <Text style={styles.calc}>{math.n1} × {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} × {stored.n2} = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     } else if (type === 'divi') {
       const typeOfCalc = {
+        valueNumber: math.n1 / math.n2,
         viewCalc: <Text style={styles.calc}>{math.n1} ÷ {math.n2}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} ÷ {stored.n2} = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67</Alert>
       }
       return typeOfCalc
     } else if (type === 'raiz2') {
       const typeOfCalc = {
+        valueNumber: Number.isInteger(Math.sqrt(math.n1)) ? Math.sqrt(math.n1) : Math.sqrt(math.n1).toFixed(2),
         viewCalc: <Text style={styles.calc}>√{math.n1}</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length,
         text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16{'\n\n'}Esse modo pode ter contas erradas!</Alert>
       }
       return typeOfCalc
     } else if (type === 'pont2') {
       const typeOfCalc = {
+        valueNumber: math.n1 * math.n1,
         viewCalc: <Text style={styles.calc}>{math.n1}²</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1}² = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length,
       }
       return typeOfCalc
     } else if (type === 'pont3') {
       const typeOfCalc = {
+        valueNumber: math.n2 * math.n2 * math.n2,
         viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
         anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n2}³ = {stored.n3}</Text>,
-        sizeInput: typeOfNumbers().toString().length
       }
       return typeOfCalc
     }
+  }
+
+  function typeQuiz() {
+    if (type === 'regraSinais') {
+      const typeOfCalc = {
+        valueNumber: math.n1 + math.n2,
+        viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
+        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
+      }
+      return typeOfCalc
+    }
+  }
+
+  function valueCheck() {
+    const value = typeCalc().valueNumber
+    if (input != value) { // errado
+      valueChange()
+      setErros(erros + 1)
+      setColor(false)
+    } else if (input == value) { // certo
+      valueChange()
+      setPontos(pontos + 1)
+      setColor(true)
+    } else {
+      alert('erro')
+    }
+  }
+
+  useEffect(() => {
+    setMath({
+      n1: handleRandomNumber(),
+      n2: handleRandomNumber(),
+    })
+  }, [change]) // ao `change` mudar, setMath será executado
+
+  function handleRandomNumber() {
+    return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
+  }
+
+  function valueChange() {
+    setChange(change + 0.1)
+    setInput('')
+    setStored({ n1: math.n1, n2: math.n2, n3: typeCalc().valueNumber })
+    setColor()
   }
 
   return (
@@ -159,13 +140,13 @@ export const Game = ({ route }) => {
       </View>
       <Input
         value={input}
-        onSubmitEditing={checkNumber}
+        onSubmitEditing={valueCheck}
         onChangeText={setInput}
-        maxLength={typeCalc().sizeInput}
+        maxLength={typeCalc().valueNumber.toString().length}
         color={color}
       />
       <Button
-        onPress={checkNumber}
+        onPress={valueCheck}
         title='Verificar'
         buttonColor={Colors.blue}
       />
@@ -209,5 +190,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 })
-
-export default Game

@@ -7,17 +7,14 @@ import Button from '../components/Button'
 // theme
 import { Colors } from '../theme/Colors'
 
-export default function Modos({ navigation }) {
+export function Quiz({ navigation }) {
   return (
     <SafeArea>
       <Button
-        title="Operações básicas"
-        onPress={() => navigation.push('operacoes')}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Quiz"
-        onPress={() => navigation.push('quiz')}
+        title="Regra de sinais"
+        onPress={() => navigation.push('game', {
+          type: 'regraSinais'
+        })}
         buttonColor={Colors.blue}
       />
     </SafeArea>

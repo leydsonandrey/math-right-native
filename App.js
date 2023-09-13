@@ -6,9 +6,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Colors } from './theme/Colors'
 
 // pages
-import { Menu } from './pages/Menu'
-import { Modos } from './pages/Modos'
-import { Game } from './components/Game'
+import Menu from './pages/Menu'
+import Modos from './pages/Modos'
+import Operacoes from './pages/Operacoes'
+import Game from './components/Game'
 
 const Stack = createNativeStackNavigator()
 
@@ -31,12 +32,12 @@ const App = () => {
           headerShadowVisible: false,
         }}
       >
-        <Stack.Screen name="Menu" component={Menu} options={{
-          title: '',
+        <Stack.Screen name="menu" component={Menu} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="Modos" component={Modos} options={{ title: 'Modos' }} />
-        <Stack.Screen name="Game" component={Game} options={{ title: 'Calcule' }} />
+        <Stack.Screen name="modos" component={Modos} options={{ title: 'Modos' }} />
+        <Stack.Screen name="operacoes" component={Operacoes} options={{ title: 'Operações' }} />
+        <Stack.Screen name="game" component={Game} options={{ title: 'Calcule' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

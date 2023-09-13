@@ -1,26 +1,26 @@
-import React from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import React from 'react'
+import { TextInput, View, StyleSheet } from 'react-native'
 import { Colors } from '../theme/Colors'
 
-export const Input = ({
+export default function Input({
   value,
   onSubmitEditing,
   onChangeText,
   maxLength,
   color,
-}) => {
+}) {
 
-  let buttonStyle = styles.inputDefault
+  let inputColor = styles.inputDefault
   if (color) {
-    buttonStyle = styles.inputGreen
+    inputColor = styles.inputGreen
   } else if (color === false) {
-    buttonStyle = styles.inputRed
+    inputColor = styles.inputRed
   }
 
   return (
     <View style={styles.container}>
       <TextInput
-        style={[styles.input, buttonStyle]}
+        style={[styles.input, inputColor]}
         value={value}
         onSubmitEditing={onSubmitEditing}
         onChangeText={onChangeText}
@@ -32,7 +32,7 @@ export const Input = ({
       />
     </View>
   )
-};
+}
 
 const styles = StyleSheet.create({
   input: {
@@ -53,5 +53,5 @@ const styles = StyleSheet.create({
   inputRed: {
     borderColor: Colors.red,
   }
-});
+})
 

@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, Linking } from 'react-native';
+import React from 'react'
+import { View, Linking } from 'react-native'
 
 // components
-import { Button } from '../components/Button'
-import { SafeArea } from '../components/SafeArea'
+import Button from '../components/Button'
+import SafeArea from '../components/SafeArea'
 
 // theme
 import { Colors } from '../theme/Colors'
 import Logo from '../assets/logo_svg'
 
-export const Menu = ({ navigation }) => {
+export default function Menu({ navigation }) {
   return (
     <SafeArea notScrollView>
       <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
@@ -17,7 +17,7 @@ export const Menu = ({ navigation }) => {
       </View>
       <Button
         title="Jogar"
-        onPress={() => navigation.push('Modos')}
+        onPress={() => navigation.push('modos')}
         buttonColor={Colors.blue}
       />
       <Button
@@ -26,5 +26,5 @@ export const Menu = ({ navigation }) => {
         buttonColor={Colors.blue}
       />
     </SafeArea>
-  );
+  )
 }

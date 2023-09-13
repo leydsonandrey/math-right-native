@@ -10,7 +10,7 @@ import {
 
 import { Colors } from '../theme/Colors'
 
-const SafeAreaComponent = ({ children, notScrollView }) => {
+export function SafeAreaComponent({ children, notScrollView }) {
   if (notScrollView) {
     return (
       <SafeAreaView style={styles.container(Colors.black)} >
@@ -38,7 +38,7 @@ const SafeAreaComponent = ({ children, notScrollView }) => {
   }
 }
 
-export const SafeArea = ({ children, notScrollView }) => {
+export default function SafeArea({ children, notScrollView }) {
   return (
     <SafeAreaComponent notScrollView={notScrollView}>
       {children}
@@ -72,5 +72,3 @@ const styles = StyleSheet.create({
     gap: 15,
   })
 })
-
-export default SafeArea

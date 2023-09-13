@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 import {
   Text,
   StyleSheet,
   TouchableOpacity
-} from 'react-native';
+} from 'react-native'
 
-export const Button = ({ onPress, title, buttonColor, textColor }) => {
+export default function Button({ onPress, title, buttonColor, textColor }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.buttonContainer(buttonColor)}>
       <Text selectable={false} style={styles.buttonText(textColor)}>{title}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   buttonContainer: (color) => ({
@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold'
   }),
-});
+})
 
