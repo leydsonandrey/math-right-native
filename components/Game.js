@@ -13,8 +13,8 @@ import Timer from './Timer'
 import SafeArea from './SafeArea'
 
 // theme
-import { Colors } from '../theme/Colors'
-import { Alert } from '../theme/Alert'
+import { Colors } from '../ui/Colors'
+import { Alert } from '../ui/Alert'
 
 export default function Game({ route }) {
   //    valor do estado / função de atualização / estado inicial

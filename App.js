@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // theme
-import { Colors } from './theme/Colors'
+import { Colors } from './ui/Colors'
 
 // pages
 import Menu from './pages/Menu'

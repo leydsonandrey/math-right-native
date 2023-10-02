@@ -5,7 +5,7 @@ import SafeArea from '../components/SafeArea'
 import Button from '../components/Button'
 
 // theme
-import { Colors } from '../theme/Colors'
+import { Colors } from '../ui/Colors'
 
 export default function Modos({ navigation }) {
   return (

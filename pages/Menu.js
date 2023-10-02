@@ -6,7 +6,7 @@ import Button from '../components/Button'
 import SafeArea from '../components/SafeArea'
 
 // theme
-import { Colors } from '../theme/Colors'
+import { Colors } from '../ui/Colors'
 import Logo from '../assets/logo_svg'
 
 export default function Menu({ navigation }) {
