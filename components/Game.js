@@ -109,7 +109,7 @@ export default function Game({ route }) {
   }, [change]) // ao `change` mudar, setMath será executado
 
   function handleRandomNumber() {
-    return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
+    return Math.floor(Math.random() * (maximo - -maximo + 1)) + -maximo;
   }
 
   function valueChange() {
