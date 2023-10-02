@@ -32,52 +32,52 @@ export default function Game({ route }) {
     if (type === 'soma') {
       const typeOfCalc = {
         valueNumber: math.n1 + math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
+        viewCalc: `${math.n1} + ${math.n2}`,
+        anterior: `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`,
       }
       return typeOfCalc
     } else if (type === 'subt') {
       const typeOfCalc = {
         valueNumber: math.n1 - math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n1} - {math.n2}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} - {stored.n2} = {stored.n3}</Text>,
+        viewCalc: `${math.n1} - ${math.n2}`,
+        anterior: `Anterior${'\n'}${stored.n1} - ${stored.n2} = ${stored.n3}`,
       }
       return typeOfCalc
     } else if (type === 'mult') {
       const typeOfCalc = {
         valueNumber: math.n1 * math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n1} × {math.n2}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} × {stored.n2} = {stored.n3}</Text>,
+        viewCalc: `${math.n1} × ${math.n2}`,
+        anterior: `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`,
       }
       return typeOfCalc
     } else if (type === 'divi') {
       const typeOfCalc = {
         valueNumber: math.n1 / math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n1} ÷ {math.n2}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} ÷ {stored.n2} = {stored.n3}</Text>,
-        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67</Alert>
+        viewCalc: `${math.n1} ÷ ${math.n2}`,
+        anterior: `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`,
+        text: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67',
       }
       return typeOfCalc
     } else if (type === 'raiz2') {
       const typeOfCalc = {
         valueNumber: Number.isInteger(Math.sqrt(math.n1)) ? Math.sqrt(math.n1) : Math.sqrt(math.n1).toFixed(2),
-        viewCalc: <Text style={styles.calc}>√{math.n1}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}√{stored.n1} = {stored.n3}</Text>,
-        text: <Alert>Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16{'\n\n'}Esse modo pode ter contas erradas!</Alert>
+        viewCalc: `√${math.n1}`,
+        anterior: `Anterior${'\n'}√${stored.n1} = ${stored.n3}`,
+        text: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16. Esse modo pode ter contas erradas!',
       }
       return typeOfCalc
     } else if (type === 'pont2') {
       const typeOfCalc = {
         valueNumber: math.n1 * math.n1,
-        viewCalc: <Text style={styles.calc}>{math.n1}²</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1}² = {stored.n3}</Text>,
+        viewCalc: `${math.n1}²`,
+        anterior: `Anterior${'\n'}${stored.n1}² = ${stored.n3}`,
       }
       return typeOfCalc
     } else if (type === 'pont3') {
       const typeOfCalc = {
         valueNumber: math.n2 * math.n2 * math.n2,
         viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n2}³ = {stored.n3}</Text>,
+        anterior: `Anterior${'\n'}${stored.n2}³ = ${stored.n3}`,
       }
       return typeOfCalc
     }
@@ -122,11 +122,11 @@ export default function Game({ route }) {
   return (
     <SafeArea>
       <View>
-        {typeCalc().viewCalc}
+        <Text style={styles.calc}>{typeCalc().viewCalc}</Text>
         <View style={styles.statusContainer}>
           <Text style={[styles.statusText, styles.statusTrue]}>Acertos{'\n'}{pontos}</Text>
           <Text style={[styles.statusText, styles.statusFalse]}>Errados{'\n'}{erros}</Text>
-          {typeCalc().anterior}
+          <Text style={[styles.statusText, styles.statusPrevious]}>{typeCalc().anterior}</Text>
           <Timer style={[styles.statusText, styles.statusTimer]} />
         </View>
       </View>
@@ -143,7 +143,7 @@ export default function Game({ route }) {
         buttonColor={Colors.blue}
       />
       <StatusBar style="light" />
-      {typeCalc().text}
+      <Alert>{typeCalc().text}</Alert>
     </SafeArea >
   );
 }
