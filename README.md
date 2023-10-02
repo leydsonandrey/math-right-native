@@ -17,9 +17,9 @@ Um simples gerador de cálculos com pontuação.
 
 ### Preciso
 
-- Node 18 LTS
-- Npm
-- Yarn
+- `node 18 LTS`
+- `npm`
+- `yarn`
 - `expo-cli`
 - `eas-cli`
 
