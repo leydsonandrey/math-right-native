@@ -7,14 +7,14 @@ import {
 import { StatusBar } from 'expo-status-bar'
 
 // components
-import Button from './Button'
-import Input from './Input'
 import Timer from './Timer'
-import SafeArea from './SafeArea'
 
-// theme
+// ui
 import { Colors } from '../ui/Colors'
-import { Alert } from '../ui/Alert'
+import Alert from '../ui/Alert'
+import SafeArea from '../ui/SafeArea'
+import Button from '../ui/Button'
+import Input from '../ui/Input'
 
 export default function Game({ route }) {
   //    valor do estado / função de atualização / estado inicial

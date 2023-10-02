@@ -1,10 +1,8 @@
 import React from 'react'
 
-// components
-import SafeArea from '../components/SafeArea'
-import Button from '../components/Button'
-
-// theme
+// ui
+import SafeArea from '../ui/SafeArea'
+import Button from '../ui/Button'
 import { Colors } from '../ui/Colors'
 
 export default function Modos({ navigation }) {

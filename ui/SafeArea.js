@@ -8,7 +8,7 @@ import {
   Platform
 } from 'react-native'
 
-import { Colors } from '../ui/Colors'
+import { Colors } from './Colors'
 
 export function SafeAreaComponent({ children, notScrollView }) {
   if (notScrollView) {

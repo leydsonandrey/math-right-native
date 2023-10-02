@@ -1,11 +1,9 @@
 import React from 'react'
 import { View, Linking } from 'react-native'
 
-// components
-import Button from '../components/Button'
-import SafeArea from '../components/SafeArea'
-
-// theme
+// ui
+import Button from '../ui/Button'
+import SafeArea from '../ui/SafeArea'
 import { Colors } from '../ui/Colors'
 import Logo from '../assets/logo_svg'
 
