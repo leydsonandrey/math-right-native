@@ -83,29 +83,21 @@ export default function Game({ route }) {
     }
   }
 
-  function typeQuiz() {
-    if (type === 'regraSinais') {
-      const typeOfCalc = {
-        valueNumber: math.n1 + math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n1} + {math.n2}</Text>,
-        anterior: <Text style={[styles.statusText, styles.statusPrevious]}>Anterior{'\n'}{stored.n1} + {stored.n2} = {stored.n3}</Text>,
-      }
-      return typeOfCalc
-    }
-  }
-
   function valueCheck() {
     const value = typeCalc().valueNumber
-    if (input != value) { // errado
-      valueChange()
-      setErros(erros + 1)
-      setColor(false)
-    } else if (input == value) { // certo
-      valueChange()
-      setPontos(pontos + 1)
-      setColor(true)
-    } else {
-      alert('erro')
+    try {
+      if (input != value) { // errado
+        valueChange()
+        setErros(erros + 1)
+        setColor(false)
+      } else if (input == value) { // certo
+        valueChange()
+        setPontos(pontos + 1)
+        setColor(true)
+      }
+    }
+    catch (e) {
+      alert(e)
     }
   }
 

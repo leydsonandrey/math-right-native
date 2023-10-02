@@ -15,11 +15,6 @@ export default function Modos({ navigation }) {
         onPress={() => navigation.push('operacoes')}
         buttonColor={Colors.blue}
       />
-      <Button
-        title="Quiz"
-        onPress={() => navigation.push('quiz')}
-        buttonColor={Colors.blue}
-      />
     </SafeArea>
   )
 }
