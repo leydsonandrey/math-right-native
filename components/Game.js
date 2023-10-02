@@ -119,6 +119,11 @@ export default function Game({ route }) {
     setColor()
   }
 
+  let alert;
+  if (typeCalc().text != undefined) {
+    alert = <Alert>{typeCalc().text}</Alert>
+  }
+
   return (
     <SafeArea>
       <View>
@@ -142,9 +147,9 @@ export default function Game({ route }) {
         title='Verificar'
         buttonColor={Colors.blue}
       />
+      {alert}
       <StatusBar style="light" />
-      <Alert>{typeCalc().text}</Alert>
-    </SafeArea >
+    </SafeArea>
   );
 }
 
