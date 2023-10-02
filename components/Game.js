@@ -28,63 +28,63 @@ export default function Game({ route }) {
 
   const { maximo, type } = route.params
 
-  function typeCalc() {
+  function ListaCalculo() {
+    const soma = { 
+      calculo: math.n1 + math.n2,
+      calculoString: `${math.n1} + ${math.n2}`,
+      anterior: `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`
+    }
+    const subt = {
+      calculo: math.n1 - math.n2,
+      calculoString: `${math.n1} + ${math.n2}`,
+      anterior: `Anterior${'\n'}${stored.n1} - ${stored.n2} = ${stored.n3}`
+    }
+    const mult = {
+      calculo: math.n1 * math.n2,
+      calculoString: `${math.n1} × ${math.n2}`,
+      anterior: `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`
+    }
+    const divi = {
+      calculo: math.n1 / math.n2,
+      calculoString: `${math.n1} ÷ ${math.n2}`,
+      anterior: `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`,
+      texto: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67'
+    }
+    const raiz2 = {
+      calculo: Number.isInteger(Math.sqrt(math.n1)) ? Math.sqrt(math.n1) : Math.sqrt(math.n1).toFixed(2),
+      calculoString: `√${math.n1}`, anterior: `Anterior${'\n'}√${stored.n1} = ${stored.n3}`,
+      texto: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16. Esse modo pode ter contas erradas!'
+    }
+    const pont2 = {
+      calculo: math.n1 * math.n1,
+      calculoString: `${math.n1}²`,
+      anterior: `Anterior${'\n'}${stored.n1}² = ${stored.n3}`
+    }
+    const pont3 = {
+      calculo: math.n2 * math.n2 * math.n2,
+      calculoString: `${math.n2}³`,
+      anterior: `Anterior${'\n'}${stored.n2}³ = ${stored.n3}`
+    }
+
     if (type === 'soma') {
-      const typeOfCalc = {
-        valueNumber: math.n1 + math.n2,
-        viewCalc: `${math.n1} + ${math.n2}`,
-        anterior: `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`,
-      }
-      return typeOfCalc
+      return soma
     } else if (type === 'subt') {
-      const typeOfCalc = {
-        valueNumber: math.n1 - math.n2,
-        viewCalc: `${math.n1} - ${math.n2}`,
-        anterior: `Anterior${'\n'}${stored.n1} - ${stored.n2} = ${stored.n3}`,
-      }
-      return typeOfCalc
+      return subt
     } else if (type === 'mult') {
-      const typeOfCalc = {
-        valueNumber: math.n1 * math.n2,
-        viewCalc: `${math.n1} × ${math.n2}`,
-        anterior: `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`,
-      }
-      return typeOfCalc
+      return mult
     } else if (type === 'divi') {
-      const typeOfCalc = {
-        valueNumber: math.n1 / math.n2,
-        viewCalc: `${math.n1} ÷ ${math.n2}`,
-        anterior: `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`,
-        text: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67',
-      }
-      return typeOfCalc
+      return divi
     } else if (type === 'raiz2') {
-      const typeOfCalc = {
-        valueNumber: Number.isInteger(Math.sqrt(math.n1)) ? Math.sqrt(math.n1) : Math.sqrt(math.n1).toFixed(2),
-        viewCalc: `√${math.n1}`,
-        anterior: `Anterior${'\n'}√${stored.n1} = ${stored.n3}`,
-        text: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: √5 = 2.24, √10 = 3.16. Esse modo pode ter contas erradas!',
-      }
-      return typeOfCalc
+      return raiz2
     } else if (type === 'pont2') {
-      const typeOfCalc = {
-        valueNumber: math.n1 * math.n1,
-        viewCalc: `${math.n1}²`,
-        anterior: `Anterior${'\n'}${stored.n1}² = ${stored.n3}`,
-      }
-      return typeOfCalc
+      return pont2
     } else if (type === 'pont3') {
-      const typeOfCalc = {
-        valueNumber: math.n2 * math.n2 * math.n2,
-        viewCalc: <Text style={styles.calc}>{math.n2}³</Text>,
-        anterior: `Anterior${'\n'}${stored.n2}³ = ${stored.n3}`,
-      }
-      return typeOfCalc
+      return pont3
     }
   }
 
   function valueCheck() {
-    const value = typeCalc().valueNumber
+    const value = ListaCalculo.calculo
     try {
       if (input != value) { // errado
         valueChange()
@@ -115,23 +115,23 @@ export default function Game({ route }) {
   function valueChange() {
     setChange(change + 0.1)
     setInput('')
-    setStored({ n1: math.n1, n2: math.n2, n3: typeCalc().valueNumber })
+    setStored({ n1: math.n1, n2: math.n2, n3: ListaCalculo().calculo })
     setColor()
   }
 
   let alert;
-  if (typeCalc().text != undefined) {
-    alert = <Alert>{typeCalc().text}</Alert>
+  if (ListaCalculo().texto != undefined) {
+    alert = <Alert>{ListaCalculo().texto}</Alert>
   }
 
   return (
     <SafeArea>
       <View>
-        <Text style={styles.calc}>{typeCalc().viewCalc}</Text>
+        <Text style={styles.calc}>{ListaCalculo().calculoString}</Text>
         <View style={styles.statusContainer}>
           <Text style={[styles.statusText, styles.statusTrue]}>Acertos{'\n'}{pontos}</Text>
           <Text style={[styles.statusText, styles.statusFalse]}>Errados{'\n'}{erros}</Text>
-          <Text style={[styles.statusText, styles.statusPrevious]}>{typeCalc().anterior}</Text>
+          <Text style={[styles.statusText, styles.statusPrevious]}>{ListaCalculo().anterior}</Text>
           <Timer style={[styles.statusText, styles.statusTimer]} />
         </View>
       </View>
@@ -139,7 +139,7 @@ export default function Game({ route }) {
         value={input}
         onSubmitEditing={valueCheck}
         onChangeText={setInput}
-        maxLength={typeCalc().valueNumber.toString().length}
+        maxLength={ListaCalculo().calculo.toString().length}
         color={color}
       />
       <Button
