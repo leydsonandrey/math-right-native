@@ -45,7 +45,7 @@ export default function Game({ route }) {
       anterior: `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`
     }
     const divi = {
-      calculo: math.n1 / math.n2,
+      calculo: Number.isInteger(math.n1 / math.n2) ? Math.n1 / Math.n2 : (Math.n1 / Math.n2).toFixed(2),
       calculoString: `${math.n1} ÷ ${math.n2}`,
       anterior: `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`,
       texto: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67'
