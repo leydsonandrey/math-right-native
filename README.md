@@ -2,6 +2,9 @@
 
 Um simples gerador de cálculos com pontuação. 
 
+- [Site](math-right.vercel.app)
+- [Site Preview](https://math-right-git-dev-andrey-tar-xz.vercel.app)
+
 <img src="screenshots/screenshot_menu.png" width="200"> | <img src="screenshots/screenshot_modos.png" width="200"> | <img src="screenshots/screenshot_game.png" width="200">
 :---: | :---: | :---:
 
