@@ -29,14 +29,14 @@ export default function Game({ route }) {
   const { maximo, type } = route.params
 
   function ListaCalculo() {
-    const soma = { 
+    const soma = {
       calculo: math.n1 + math.n2,
       calculoString: `${math.n1} + ${math.n2}`,
       anterior: `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`
     }
     const subt = {
       calculo: math.n1 - math.n2,
-      calculoString: `${math.n1} + ${math.n2}`,
+      calculoString: `${math.n1} - ${math.n2}`,
       anterior: `Anterior${'\n'}${stored.n1} - ${stored.n2} = ${stored.n3}`
     }
     const mult = {
