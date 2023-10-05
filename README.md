@@ -49,7 +49,7 @@ yarn web
 npx eas build -p android --profile preview
 ```
 
-## License
+## Licença
 
 ```
 Copyright 2023 Leydson Andrey
