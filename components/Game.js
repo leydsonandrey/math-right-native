@@ -28,6 +28,21 @@ export default function Game({ route }) {
 
   const { maximo, type } = route.params
 
+  useEffect(() => {
+    setMath({
+      n1: handleRandomNumber(),
+      n2: handleRandomNumber(),
+    })
+  }, [change]) // ao `change` mudar, setMath será executado
+
+  function handleRandomNumber() {
+    if (type === 'raiz2') {
+      return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
+    } else {
+      return Math.floor(Math.random() * (maximo - -maximo + 1)) + -maximo;
+    }
+  }
+
   function ListaCalculo() {
     const soma = {
       calculo: math.n1 + math.n2,
@@ -45,7 +60,7 @@ export default function Game({ route }) {
       anterior: `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`
     }
     const divi = {
-      calculo: Number.isInteger(math.n1 / math.n2) ? Math.n1 / Math.n2 : (Math.n1 / Math.n2).toFixed(2),
+      calculo: Number.isInteger(math.n1 / math.n2) ? math.n1 / math.n2 : (math.n1 / math.n2).toFixed(2),
       calculoString: `${math.n1} ÷ ${math.n2}`,
       anterior: `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`,
       texto: 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67'
@@ -101,20 +116,7 @@ export default function Game({ route }) {
     }
   }
 
-  useEffect(() => {
-    setMath({
-      n1: handleRandomNumber(),
-      n2: handleRandomNumber(),
-    })
-  }, [change]) // ao `change` mudar, setMath será executado
 
-  function handleRandomNumber() {
-    if (type === 'raiz2') {
-      return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
-    } else {
-      return Math.floor(Math.random() * (maximo - -maximo + 1)) + -maximo;
-    }
-  }
 
   function valueChange() {
     setChange(change + 0.1)
