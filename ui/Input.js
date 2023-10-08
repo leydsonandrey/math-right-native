@@ -27,7 +27,7 @@ export default function Input({
         maxLength={maxLength}
         autoFocus={true}
         blurOnSubmit={false}
-        keyboardType='number-pad'
+        inputMode='numeric'
         cursorColor={'#fff'}
       />
     </View>
