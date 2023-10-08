@@ -28,49 +28,49 @@ export default function Operacoes({ navigation }) {
       </Picker>
       <Button
         title="Soma"
-        onPress={() => navigation.navigate('game', {
+        onPress={() => navigation.navigate('play', {
           maximo: selectedValue, type: 'soma'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Subtração"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.push('play', {
           maximo: selectedValue, type: 'subt'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Multiplicação"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.push('play', {
           maximo: selectedValue, type: 'mult'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Divisão"
-        onPress={() => navigation.navigate('game', {
+        onPress={() => navigation.navigate('play', {
           maximo: selectedValue, type: 'divi'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Raiz quadrada"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.push('play', {
           maximo: selectedValue, type: 'raiz2'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Expoente 2"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.push('play', {
           maximo: selectedValue, type: 'pont2'
         })}
         buttonColor={Colors.blue}
       />
       <Button
         title="Expoente 3"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.push('play', {
           maximo: selectedValue, type: 'pont3'
         })}
         buttonColor={Colors.blue}
