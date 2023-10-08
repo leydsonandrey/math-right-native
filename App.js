@@ -15,20 +15,7 @@ const Drawer = createDrawerNavigator();
 
 function DrawerMenu() {
   return (
-    <Drawer.Navigator initialRouteName="Operacoes" screenOptions={{
-      headerStyle: {
-        backgroundColor: Colors.jet,
-      },
-      headerTintColor: 'white',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-      headerShadowVisible: false,
-      drawerStyle: {
-        backgroundColor: Colors.jet,
-      }
-    }}
-    >
+    <Drawer.Navigator initialRouteName="Operacoes">
       <Drawer.Screen
         name="Operações"
         component={Operacoes}
