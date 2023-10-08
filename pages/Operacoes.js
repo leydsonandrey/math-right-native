@@ -28,7 +28,7 @@ export default function Operacoes({ navigation }) {
       </Picker>
       <Button
         title="Soma"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.navigate('game', {
           maximo: selectedValue, type: 'soma'
         })}
         buttonColor={Colors.blue}
@@ -49,7 +49,7 @@ export default function Operacoes({ navigation }) {
       />
       <Button
         title="Divisão"
-        onPress={() => navigation.push('game', {
+        onPress={() => navigation.navigate('game', {
           maximo: selectedValue, type: 'divi'
         })}
         buttonColor={Colors.blue}
