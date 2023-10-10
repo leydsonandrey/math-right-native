@@ -30,9 +30,9 @@ function DrawerMenu() {
     }}
     >
       <Drawer.Screen
-        name="Operações"
+        name="operacoes"
         component={Operacoes}
-        options={{ drawerLabel: 'Operações' }}
+        options={{ title: 'Operações básicas', drawerLabel: 'Operações básicas' }}
       />
     </Drawer.Navigator>
   );
@@ -60,10 +60,10 @@ function App() {
           headerShadowVisible: false,
         }}
       >
-        <Stack.Screen name="DrawerMenu" component={DrawerMenu} options={{
+        <Stack.Screen name="Menu" component={DrawerMenu} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="play" component={Game} options={{ title: 'Calcule' }} />
+        <Stack.Screen name="Play" component={Game} options={{ title: 'Calcule' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
