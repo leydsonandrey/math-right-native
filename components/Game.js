@@ -18,7 +18,7 @@ import Input from '../ui/Input'
 
 export default function Game({ route }) {
   //    valor do estado / função de atualização / estado inicial
-  const [input, setInput] = useState()
+  const [input, setInput] = useState('')
   const [math, setMath] = useState({ n1: 0, n2: 0 })
   const [change, setChange] = useState(0)
   const [pontos, setPontos] = useState(0)
