@@ -9,6 +9,7 @@ import { Colors } from './ui/Colors'
 
 // pages
 import Operacoes from './pages/Operacoes'
+import Sobre from './pages/Sobre'
 import Game from './components/Game'
 
 const Drawer = createDrawerNavigator();
@@ -33,6 +34,11 @@ function DrawerMenu() {
         name="operacoes"
         component={Operacoes}
         options={{ title: 'Operações básicas', drawerLabel: 'Operações básicas' }}
+      />
+      <Drawer.Screen
+        name="sobre"
+        component={Sobre}
+        options={{ title: 'Sobre', drawerLabel: 'Sobre' }}
       />
     </Drawer.Navigator>
   );
