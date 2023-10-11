@@ -1,4 +1,5 @@
 import React from 'react'
+import { useWindowDimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -15,8 +16,13 @@ import Game from './components/Game'
 const Drawer = createDrawerNavigator();
 
 function DrawerMenu() {
+
+  const dimensions = useWindowDimensions();
+
+  const isLargeScreen = dimensions.width >= 768;
+
   return (
-    <Drawer.Navigator initialRouteName="Operacoes" screenOptions={{
+    <Drawer.Navigator initialRouteName="Operacoes" defaultStatus="closed" screenOptions={{
       headerStyle: {
         backgroundColor: Colors.jet,
       },
@@ -26,8 +32,17 @@ function DrawerMenu() {
       },
       headerShadowVisible: false,
       drawerStyle: {
+        width: isLargeScreen ? null : '70%',
         backgroundColor: Colors.jet,
-      }
+        padding: 15,
+      },
+      drawerType: isLargeScreen ? 'permanent' : 'back',
+      drawerActiveTintColor: Colors.white,
+      drawerActiveBackgroundColor: Colors.blue,
+      drawerInactiveTintColor: Colors.white,
+
+      overlayColor: 'transparent',
+      swipeEnabled: true
     }}
     >
       <Drawer.Screen
