@@ -26,7 +26,7 @@ export default function Game({ route }) {
   const [color, setColor] = useState()
   const [stored, setStored] = useState({ n1: 0, n2: 0, n3: 0 })
 
-  const { maximo, type } = route.params
+  const { maximo, type, negativo } = route.params
 
   useEffect(() => {
     setMath({
@@ -37,33 +37,43 @@ export default function Game({ route }) {
 
   function handleRandomNumber() {
     if (type === 'raiz2') {
-      return Math.floor(Math.random() * (maximo - 1 + 1)) + 1;
+      return Math.floor(Math.random() * (maximo - 1 + 1)) + 1
+    } if (negativo) {
+      return Math.floor(Math.random() * (maximo - -maximo + 1)) + -maximo
     } else {
-      return Math.floor(Math.random() * (maximo - -maximo + 1)) + -maximo;
+      return Math.floor(Math.random() * (maximo - 1 + 1)) + 1
     }
   }
 
   const calcContainer = new Object()
 
+  function calculoStringNegativeFormat(number) {
+    if (number < 0) {
+      return `(${number})`
+    } else {
+      return `${number}`
+    }
+  }
+
   switch (type) {
     case 'soma':
       calcContainer.calculo = math.n1 + math.n2
-      calcContainer.calculoString = `${math.n1} + ${math.n2}`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} - ${calculoStringNegativeFormat(math.n2)}`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`
       break
     case 'subt':
       calcContainer.calculo = math.n1 - math.n2
-      calcContainer.calculoString = `${math.n1} - ${math.n2}`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} - ${calculoStringNegativeFormat(math.n2)}`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1} - ${stored.n2} = ${stored.n3}`
       break
     case 'mult':
       calcContainer.calculo = math.n1 * math.n2
-      calcContainer.calculoString = `${math.n1} × ${math.n2}`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} × ${calculoStringNegativeFormat(math.n2)}`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1} × ${stored.n2} = ${stored.n3}`
       break
     case 'divi':
       calcContainer.calculo = Number.isInteger(math.n1 / math.n2) ? math.n1 / math.n2 : (math.n1 / math.n2).toFixed(2)
-      calcContainer.calculoString = `${math.n1} ÷ ${math.n2}`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} ÷ ${calculoStringNegativeFormat(math.n2)}`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1} ÷ ${stored.n2} = ${stored.n3}`
       calcContainer.texto = 'Máximo de 2 Casas Decimais depois do ponto (.) - padrão americano. Ex.: 3÷2 = 1.5, 8÷3 = 2.67'
       break
@@ -75,12 +85,12 @@ export default function Game({ route }) {
       break
     case 'pont2':
       calcContainer.calculo = math.n1 * math.n1
-      calcContainer.calculoString = `${math.n1}²`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)}²`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1}² = ${stored.n3}`
       break
     case 'pont3':
       calcContainer.calculo = math.n2 * math.n2 * math.n2
-      calcContainer.calculoString = `${math.n2}³`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n2)}³`
       calcContainer.anterior = `Anterior${'\n'}${stored.n2}³ = ${stored.n3}`
       break
   }
@@ -106,7 +116,7 @@ export default function Game({ route }) {
   function valueChange() {
     setChange(change + 0.1)
     setInput('')
-    setStored({ n1: math.n1, n2: math.n2, n3: calcContainer.calculo })
+    setStored({ n1: calculoStringNegativeFormat(math.n1), n2: calculoStringNegativeFormat(math.n2), n3: calcContainer.calculo })
     setColor()
   }
 
