@@ -1,9 +1,10 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native';
+import { View, Button } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import 'react-native-gesture-handler'
 
 // ui
 import { Colors } from './ui/Colors'
@@ -32,13 +33,13 @@ function DrawerMenu() {
       },
       headerShadowVisible: false,
       drawerStyle: {
-        width: isLargeScreen ? null : '70%',
+        width: isLargeScreen ? '30%' : '70%',
         backgroundColor: Colors.jet,
         border: 'none',
         padding: 10,
       },
       drawerAllowFontScaling: true,
-      drawerType: isLargeScreen ? 'permanent' : 'back',
+      drawerType: 'front',
       drawerActiveTintColor: Colors.white,
       drawerActiveBackgroundColor: Colors.blue,
       drawerInactiveTintColor: Colors.white,
