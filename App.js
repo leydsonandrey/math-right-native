@@ -37,6 +37,7 @@ function DrawerMenu() {
         border: 'none',
         padding: 15,
       },
+      drawerAllowFontScaling: true,
       drawerType: isLargeScreen ? 'permanent' : 'back',
       drawerActiveTintColor: Colors.white,
       drawerActiveBackgroundColor: Colors.blue,
