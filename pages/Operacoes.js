@@ -1,16 +1,29 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
+import { Text, Switch, Pressable, StyleSheet, Platform } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 
-// components
-import SafeArea from '../components/SafeArea'
-import Button from '../components/Button'
-
-// theme
+// ui
+import SafeArea from '../ui/SafeArea'
+import Button from '../ui/Button'
 import { Colors } from '../ui/Colors'
+
+function ButtonRouter({ type, title, selectedValue, negativo, navigation }) {
+  return (
+    <Button
+      title={title}
+      onPress={() => navigation.navigate('Play', {
+        maximo: selectedValue, type: type, negativo: negativo
+      })}
+      buttonColor={Colors.blue}
+    />
+  )
+}
 
 export default function Operacoes({ navigation }) {
   const [selectedValue, setSelectedValue] = useState(10);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <SafeArea>
       <Text style={{ color: 'white', fontSize: 16 }}>Valor máximo:</Text>
@@ -28,55 +41,46 @@ export default function Operacoes({ navigation }) {
         <Picker.Item label="10.000" value={10000} />
         <Picker.Item label="100.000" value={100000} />
       </Picker>
-      <Button
-        title="Soma"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'soma'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Subtração"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'subt'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Multiplicação"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'mult'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Divisão"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'divi'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Raiz quadrada"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'raiz2'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Expoente 2"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'pont2'
-        })}
-        buttonColor={Colors.blue}
-      />
-      <Button
-        title="Expoente 3"
-        onPress={() => navigation.push('game', {
-          maximo: selectedValue, type: 'pont3'
-        })}
-        buttonColor={Colors.blue}
-      />
-    </SafeArea>
+      <Pressable onPress={toggleSwitch} style={styles.buttonContainer}>
+        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', marginLeft: 10 }}>Números negativos</Text>
+        <Switch
+          trackColor={{ false: '#767577', true: '#767577' }}
+          thumbColor={isEnabled ? Colors.blue : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+      </Pressable>
+      <ButtonRouter type={'soma'} title={'Soma'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'subt'} title={'Subtração'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'mult'} title={'Multiplicação'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'divi'} title={'Divisão'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'raiz2'} title={'Raiz quadrada'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'pont2'} title={'Expoente 2'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+      <ButtonRouter type={'pont3'} title={'Expoente 3'} negativo={isEnabled} selectedValue={selectedValue} navigation={navigation} />
+    </SafeArea >
   )
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    backgroundColor: Colors.jet,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    ...Platform.select({
+      ios: {
+        padding: 5,
+      },
+      android: {
+        padding: 5,
+      },
+      default: {
+        padding: 10,
+        paddingVertical: 20
+      }
+    })
+  },
+})
+

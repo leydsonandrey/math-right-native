@@ -2,10 +2,15 @@
 
 Um simples gerador de cálculos com pontuação. 
 
+- [Site](math-right.vercel.app)
+- [Site Preview](https://math-right-git-dev-andrey-tar-xz.vercel.app)
+
 <img src="screenshots/screenshot_menu.png" width="200"> | <img src="screenshots/screenshot_modos.png" width="200"> | <img src="screenshots/screenshot_game.png" width="200">
 :---: | :---: | :---:
 
-## Usado
+## Desenvolvimento
+
+### Usado
 
 - [Expo](https://expo.dev)
 - [React](https://react.dev)
@@ -13,16 +18,13 @@ Um simples gerador de cálculos com pontuação.
 - [React Navigation](https://reactnavigation.org/)
 - [React Native Picker](https://github.com/react-native-picker/picker)
 
-## Desenvolvimento
-
 ### Preciso
 
-- Node 18 LTS
-- Npm
-- Yarn
+- `node 18 LTS`
+- `npm`
+- `yarn`
 - `expo-cli`
 - `eas-cli`
-
 
 ### Iniciar projeto
 ```bash
@@ -46,7 +48,7 @@ yarn web
 npx eas build -p android --profile preview
 ```
 
-## License
+## Licença
 
 ```
 Copyright 2023 Leydson Andrey

@@ -2,23 +2,28 @@ import React from 'react'
 import {
   Text,
   StyleSheet,
-  TouchableOpacity
+  Pressable
 } from 'react-native'
+
+import { Colors } from './Colors'
 
 export default function Button({ onPress, title, buttonColor, textColor }) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.buttonContainer(buttonColor)}>
+    <Pressable onPress={onPress} style={({ pressed }) => [
+      {
+        backgroundColor: pressed ? Colors.darkBlue : buttonColor,
+      },
+      styles.buttonContainer]}>
       <Text selectable={false} style={styles.buttonText(textColor)}>{title}</Text>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: (color) => ({
-    backgroundColor: color,
+  buttonContainer: {
     paddingVertical: 20,
     borderRadius: 10,
-  }),
+  },
   buttonText: (color) => ({
     color: color ? color : 'white',
     fontSize: 16,

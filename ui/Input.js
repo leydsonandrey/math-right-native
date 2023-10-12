@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextInput, View, StyleSheet } from 'react-native'
-import { Colors } from '../ui/Colors'
+import { Colors } from './Colors'
 
 export default function Input({
   value,
@@ -27,7 +27,7 @@ export default function Input({
         maxLength={maxLength}
         autoFocus={true}
         blurOnSubmit={false}
-        keyboardType='number-pad'
+        inputMode='numeric'
         cursorColor={'#fff'}
       />
     </View>

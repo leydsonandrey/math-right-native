@@ -8,7 +8,7 @@ import {
   Platform
 } from 'react-native'
 
-import { Colors } from '../ui/Colors'
+import { Colors } from './Colors'
 
 export function SafeAreaComponent({ children, notScrollView }) {
   if (notScrollView) {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   }),
   viewContainer: (notScrollView) => ({
     width: '100%',
-    maxWidth: 500,
+    maxWidth: 768,
     paddingHorizontal: 20,
     paddingBottom: 20,
     marginTop: notScrollView ? 0 : 20,
