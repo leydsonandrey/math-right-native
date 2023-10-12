@@ -58,7 +58,7 @@ export default function Game({ route }) {
   switch (type) {
     case 'soma':
       calcContainer.calculo = math.n1 + math.n2
-      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} - ${calculoStringNegativeFormat(math.n2)}`
+      calcContainer.calculoString = `${calculoStringNegativeFormat(math.n1)} + ${calculoStringNegativeFormat(math.n2)}`
       calcContainer.anterior = `Anterior${'\n'}${stored.n1} + ${stored.n2} = ${stored.n3}`
       break
     case 'subt':
