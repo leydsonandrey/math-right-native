@@ -1,6 +1,6 @@
 {
   "name": "math-right",
-  "version": "1.6",
+  "version": "1.14.8",
   "author": "Leydson Andrey <andrey.tar.xz@gmail.com>",
   "license": "Apache-2.0",
   "main": "node_modules/expo/AppEntry.js",
