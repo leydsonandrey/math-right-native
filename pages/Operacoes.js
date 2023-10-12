@@ -42,7 +42,7 @@ export default function Operacoes({ navigation }) {
         <Picker.Item label="100.000" value={100000} />
       </Picker>
       <Pressable onPress={toggleSwitch} style={styles.buttonContainer}>
-        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', marginLeft: 10 }}>Números negativos</Text>
+        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Números negativos</Text>
         <Switch
           trackColor={{ false: '#767577', true: '#767577' }}
           thumbColor={isEnabled ? Colors.blue : '#f4f3f4'}
@@ -69,18 +69,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    ...Platform.select({
-      ios: {
-        padding: 5,
-      },
-      android: {
-        padding: 5,
-      },
-      default: {
-        padding: 10,
-        paddingVertical: 20
-      }
-    })
+    paddingHorizontal: 20,
+    paddingVertical: 20
   },
 })
 
