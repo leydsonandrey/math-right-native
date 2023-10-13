@@ -20,7 +20,7 @@ function ButtonRouter({ type, title, selectedValue, negativo, navigation }) {
 }
 
 export default function Operacoes({ navigation }) {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState(100)
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -39,7 +39,6 @@ export default function Operacoes({ navigation }) {
         maxLength={10}
         color={'white'}
         placeholder={'Digite aqui...'}
-        defaultValue={10}
         noAutoFocus
         blurOnSubmit
       />
