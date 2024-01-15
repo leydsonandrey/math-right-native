@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, Switch, Pressable, StyleSheet } from 'react-native'
+import { Text, Switch, Pressable, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
 
 // ui
 import SafeArea from '../ui/SafeArea'
@@ -43,16 +43,20 @@ export default function Operacoes({ navigation }) {
         blurOnSubmit
       />
 
-      <Pressable onPress={toggleSwitch} style={styles.buttonContainer}>
-        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Números negativos</Text>
-        <Switch
-          trackColor={{ false: '#767577', true: '#767577' }}
-          thumbColor={isEnabled ? Colors.blue : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-      </Pressable>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
+        <Pressable onPress={toggleSwitch} style={styles.buttonContainer}>
+          <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Números negativos</Text>
+          <Switch
+            trackColor={{ false: '#767577', true: '#767577' }}
+            thumbColor={isEnabled ? Colors.blue : '#f4f3f4'}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+        </Pressable>
+      </KeyboardAvoidingView>
       <ButtonRouter type={'soma'} title={'Soma'} negativo={isEnabled} selectedValue={input} navigation={navigation} />
       <ButtonRouter type={'subt'} title={'Subtração'} negativo={isEnabled} selectedValue={input} navigation={navigation} />
       <ButtonRouter type={'mult'} title={'Multiplicação'} negativo={isEnabled} selectedValue={input} navigation={navigation} />
