@@ -148,7 +148,7 @@ export default function Game({ route }) {
       }
       <StatusBar style="light" />
     </SafeArea>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

@@ -8,6 +8,9 @@ export default function Input({
   onChangeText,
   maxLength,
   color,
+  noAutoFocus,
+  placeholder,
+  blurOnSubmit,
 }) {
 
   let inputColor = styles.inputDefault
@@ -25,8 +28,9 @@ export default function Input({
         onSubmitEditing={onSubmitEditing}
         onChangeText={onChangeText}
         maxLength={maxLength}
-        autoFocus={true}
-        blurOnSubmit={false}
+        autoFocus={noAutoFocus ? false : true}
+        placeholder={placeholder ? placeholder : ''}
+        blurOnSubmit={blurOnSubmit ? true : false}
         inputMode='numeric'
         cursorColor={'#fff'}
       />

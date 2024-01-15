@@ -14,13 +14,11 @@ import Operacoes from './pages/Operacoes'
 import Sobre from './pages/Sobre'
 import Game from './components/Game'
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator()
 
 function DrawerMenu() {
-
-  const dimensions = useWindowDimensions();
-
-  const isLargeScreen = dimensions.width >= 768;
+  const dimensions = useWindowDimensions()
+  const isLargeScreen = dimensions.width >= 768
 
   return (
     <Drawer.Navigator initialRouteName="Operacoes" defaultStatus="closed" screenOptions={{
@@ -59,7 +57,7 @@ function DrawerMenu() {
         options={{ title: 'Sobre', drawerLabel: 'Sobre' }}
       />
     </Drawer.Navigator>
-  );
+  )
 }
 
 
@@ -68,7 +66,7 @@ const Stack = createNativeStackNavigator()
 function App() {
   const linking = {
     prefixes: ['math-right://', 'https://math-right.vercel.app'],
-  };
+  }
 
   return (
     <NavigationContainer linking={linking}>
@@ -90,7 +88,7 @@ function App() {
         <Stack.Screen name="Play" component={Game} options={{ title: 'Calcule' }} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 export default App 

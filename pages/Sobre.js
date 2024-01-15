@@ -17,6 +17,6 @@ export default function Operacoes() {
       <View style={{ marginVertical: 10 }}>
         <Text style={{ color: 'white', textAlign: 'center' }}>Feito com ❤ por Leydson Andrey</Text>
       </View>
-    </SafeArea >
+    </SafeArea>
   )
 }
